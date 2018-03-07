@@ -1,0 +1,112 @@
+" essential settings {{{
+set nocompatible
+filetype plugin on
+" }}}
+
+" general settings {{{
+set number
+set listchars=eol:$,tab:>-,space:`,trail:~
+set backspace=indent,eol,start
+set foldmethod=marker
+
+let mapleader = ","
+nnoremap <leader>ev :vs $MYVIMRC<cr>
+nnoremap <leader>sv :so $MYVIMRC<cr>
+
+inoremap jk <esc>
+nnoremap <c-h> <c-w><c-h>
+nnoremap <c-j> <c-w><c-j>
+nnoremap <c-k> <c-w><c-k>
+nnoremap <c-l> <c-w><c-l>
+" }}}
+
+" vimscript settings {{{
+iabbrev "== " ==================================================<cr>
+\" <cr>
+\" ==================================================
+" }}}
+
+
+
+" === VimPlug : Manage Plugins === {{{
+call plug#begin('~/.vim/plugs')
+
+" P1
+Plug 'altercation/vim-colors-solarized'
+
+" P2
+Plug 'yggdroot/indentline'
+
+" P3
+Plug 'vim-airline/vim-airline'
+
+" P4
+Plug 'vim-airline/vim-airline-themes'
+
+" P5
+Plug 'aperezdc/vim-template'
+
+" P6
+Plug 'scrooloose/nerdtree'
+
+" P7
+Plug 'majutsushi/tagbar'
+
+" P8
+Plug 'ervandew/supertab'
+
+call plug#end()
+" }}}
+
+" P1 : altercation/vim-colors-solarized settings {{{
+syntax enable
+set background=dark
+set termguicolors
+colorscheme solarized
+" }}}
+
+" P2 : yggdroot/indentline settings {{{
+" }}}
+
+" P3 : vim-airline/vim-airline settings {{{
+let g:airline#extensions#tabline#enabled = 1
+" }}}
+
+" P4 : vim-airline/vim-airline-themes settings {{{
+let g:airline_theme = 'base16_solarized'
+" }}}
+
+" P5 : aperezdc/vim-template settings {{{
+let g:templates_directory = '~/.vim/templates/'
+" }}}
+
+" P6 : scrooloose/nerdtree settings {{{
+nnoremap <C-n> :NERDTreeToggle<CR>
+" }}}
+
+" P7 : majutsushi/tagbar settings {{{
+nnoremap <F8> :TagbarToggle<CR>
+" }}}
+
+
+
+" ====================
+" Python Settings
+" ====================
+" settings for python {{{
+iabbrev ifma if __name__ == '__main__':
+iabbrev cod # -*- coding: utf8 -*-
+
+
+inoremap <c-u> <esc>viwUA 
+nnoremap <c-u> viwU
+
+" 一行超过80个字符时高亮显示
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+autocmd BufNewFile,BufRead *.py match OverLength /\%121v.\+/
+
+
+" }}}
+
+
+
